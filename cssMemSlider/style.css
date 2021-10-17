@@ -4,116 +4,150 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-.wrapper{
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
     background: rgb(43, 39, 39);
 }
-
+.wrapper {
+    min-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
 #slider {
     position: relative;
     text-align: center;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    padding: 30px 30px 0px 30px;
 }
-
 #slider {
     margin: 0 auto;
 }
-
-#slides article{
+#slides article {
+    height: 1000px;
     width: 25%;
     float: left;
+    object-fit: contain;
+    object-position: top;
 }
-
-#slides .image{
+#slides .image {
     width: 400%;
     line-height: 0;
 }
-
 #overflow {
     width: 100%;
     overflow: hidden;
 }
-
 article img {
     width: 100%;
+    height: 90%;
 }
 
-#desktop:checked ~ #slider{
-    max-width: 550px;
+#desktop:checked ~ #slider {
+    max-width: 900px;
 }
 
-label, a{
+label,
+a {
     cursor: pointer;
 }
 .wrapper input {
     display: none;
 }
-#switch1:checked ~ #slides .image{
+#switch1:checked ~ #slides .image {
     margin-left: 0;
 }
-#switch2:checked ~ #slides .image{
+#switch2:checked ~ #slides .image {
     margin-left: -100%;
 }
-#switch3:checked ~ #slides .image{
+#switch3:checked ~ #slides .image {
     margin-left: -200%;
 }
-#switch4:checked ~ #slides .image{
+#switch4:checked ~ #slides .image {
     margin-left: -300%;
 }
-#controls {
-    margin: -32% 0 0 0;
+#slides .image {
+    transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+.text {
+    position: relative;
+    text-align: left;
+    color: #fff;
+    font-size: 28px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 200;
+    margin-top: 8%;
+    margin-left: 5px;
+    height: 30px;
+}
+
+#active {
+    position: relative;
     width: 100%;
     height: 20px;
+    text-align: right;
+    top: -65px;
+    right: 15px;
+    z-index: 10;
 }
 #active label {
     border-radius: 10px;
     display: inline-block;
-    width: 9px;
-    height: 9px;
-    margin-left: 10px;
+    width: 12px;
+    height: 12px;
+    margin-left: 15px;
     background: rgb(65, 127, 199);
     border: 3px solid rgb(65, 127, 199);
+    transition: opacity 0.2s ease-out;
 }
-
-#active {
-    margin: 25% 0 0;
-    text-align: right;
-}
-
-#active label:hover{
+#active label:hover {
     background: #fff;
     border-color: #fff !important;
+}
+#active label:active {
+    background-color: rgba(255, 240, 37, 0.664);
+    border-color: rgba(248, 225, 21, 0.664) !important;
 }
 #switch1:checked ~ #active label:nth-child(1),
 #switch2:checked ~ #active label:nth-child(2),
 #switch3:checked ~ #active label:nth-child(3),
-#switch4:checked ~ #active label:nth-child(4){
+#switch4:checked ~ #active label:nth-child(4) {
     background: rgb(43, 39, 39);
     border: 3px solid rgb(65, 127, 199);
 }
-#slides .image {
-    transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
-}
-#controls label:hover {
-    opacity: 0.6;
-}
 
-#controls label {
-    transition: opacity 0.2s ease-out;
-}
-
-.text{
-    position: relative;
-    text-align: left;
-    color: #fff;
-    font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 200;
-    margin-top: 8%;
-    margin-left: 5px;
+@media (max-width: 321px) {
+    #slider {
+        padding: 15px 15px 0px 15px;
+    }
+    #slides article {
+        height: 400px;
+    }
+    article img {
+        height: 80%;
+    }
+    .text {
+        position: relative;
+        font-size: 14px;
+        top: 14%;
+        margin: 0;
+    }
+    #active {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        text-align: center;
+        top: -65px;
+        right: 0px;
+        z-index: 10;
+    }
+    #active label {
+        width: 6px;
+        height: 6px;
+        margin-left: 6px;
+        border: 1px solid rgb(65, 127, 199);
+    }
+    #switch1:checked ~ #active label:nth-child(1),
+    #switch2:checked ~ #active label:nth-child(2),
+    #switch3:checked ~ #active label:nth-child(3),
+    #switch4:checked ~ #active label:nth-child(4) {
+        background: rgb(43, 39, 39);
+        border: 1px solid rgb(65, 127, 199);
+    }
 }
